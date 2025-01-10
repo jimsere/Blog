@@ -1,0 +1,16 @@
+.contact-form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 80px;
+    margin-bottom: 80px;
+}
+
+.contact-form {
+    width: 100%;
+    max-width: 500px; /* Προαιρετικά, για να περιορίσεις το πλάτος της φόρμας */
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
