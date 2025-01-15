@@ -34,3 +34,7 @@ Route::get('/contactForm', function () {
 Route::any('/newpost', [PostsController::class, 'newpost'])->name('newpost');//easy way to navigate in pages dynamically
 
 Route::get('/post/{post}', [PostsController::class, 'post'])->name('post');//easy way to navigate in pages dynamically
+
+Route::any('/edit_post/{post}', [PostsController::class, 'edit_post'])->name('post.edit');//easy way to navigate in pages dynamically
+
+Route::any('/search', [PostsController::class, 'search'])->name('search');

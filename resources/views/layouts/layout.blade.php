@@ -35,6 +35,14 @@
                     </a>
                 </li>
             </ul>
+              <form class="search-container" method="GET" action="{{ route('search') }}">
+                <input type="text" name="q" placeholder="Αναζήτηση...">
+                <button type="submit">
+                    🔍
+                </button>
+            </form>
+            
+              
         </div>
     </div>
 </nav>
