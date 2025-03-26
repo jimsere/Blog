@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\Post;
+use Auth;
 
 class PostsController extends Controller
 {
@@ -24,6 +25,7 @@ class PostsController extends Controller
             $post = new Post();
             $post->title = $request->get('title');
             $post->body = $request->get('body');
+            $post->user_id = Auth::user()->id;
            if ($post->save()){
                 echo "Success";
                 return redirect('/posts');
@@ -50,10 +52,28 @@ public function post(Post $post){
    
 }
 
-public function edit_post(Post $post){
-    return view('post', ['post' => $post]);
+public function edit_post(Post $post, Request $request){
+    if ($request->method() == 'POST'){
+        $post->title = $request->get('title');
+        $post->body = $request->get('body');
+       if ($post->save()){
+            echo "Success";
+            return redirect('posts');
+    };
+};
+    return view('edit_post', ['post' => $post]);
 
    
 }
+
+public function delete_post(Post $post){
+    if(\Auth::user()->id != $post->user->id) return redirect('posts');
+
+    $post->delete();
+    return redirect('posts');
+
+   
+}
+
 
 }

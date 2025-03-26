@@ -1,20 +1,48 @@
-@extends('layouts.layout')
+@extends('layouts.app')
 
 @section('content')
-    <div class="container d-flex justify-content-center flex-wrap">
-        @foreach ($posts as $post)
-            <div class="card my-3 mx-2 shadow-lg" style="width: 18rem; border-radius: 15px; overflow: hidden;">
-                <img src="https://via.placeholder.com/300x150" class="card-img-top" alt="Card Image">
-                <div class="card-body text-center">
-                    <h5 class="card-title" style="font-weight: bold;">
-                        <a href="{{route('post', $post) }}"> {{$post->title}}</a>               
-                    </h5>
-                    <p class="card-text text-muted">{{$post->body}}</p>
-                    <button type="button" class="btn btn-outline-primary btn-sm" data-mdb-ripple-init>
-                        Learn More
-                    </button>
+     <!-- blog section -->
+
+  <section class="blog_section layout_padding">
+    <div class="container">
+      
+      @if (Auth::check())
+            <a href="{{route('newpost')}}">New Post</a>      
+      @endif
+      <div class="d-flex justify-content-center">
+        <form class="form-inline my-2 my-lg-0" method="GET" action="{{ route('search') }}">
+            <div class="row justify-content-center">
+                <div class="col-sm-8">
+                    <input class="form-control" type="search" placeholder="Αναζήτηση" aria-label="Search" name="q">
+                </div>
+                <div class="col-sm-4">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
                 </div>
             </div>
-        @endforeach
+        </form>
     </div>
+    
+    @foreach($posts as $post)
+    <div class="row">
+      <div class="col-md-6 col-lg-4 mx-auto">
+        <div class="box">
+          <div class="img-box">
+            <img src="images/b1.jpg" alt="">
+          </div>
+          <div class="detail-box">
+            <h5>
+              {{ $post->title }}
+            </h5>
+            <p>
+              {{ $post->body }}                 
+            </p>
+            <a href="{{ route('post', $post) }}">Read more</a>              
+          </div>
+        </div>
+      </div>   
+  @endforeach        
+      </div>
+    </div>
+  </section>
+  <!-- end blog section -->
 @endsection
