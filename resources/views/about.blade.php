@@ -54,7 +54,7 @@
           <div class="detail-box">
             <div class="heading_container">
               <h2>
-                Σχετικά με εμάς
+                Σχετικα με εμας
               </h2>
             </div>
             <p class="animate__animated animate__fadeInUp">

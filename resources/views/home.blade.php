@@ -19,10 +19,10 @@
                       Δημιούργησε το δικό σου blog, μοιράσου ιδέες και συνδέσου με ανθρώπους που σε καταλαβαίνουν.
                     </p>
                     <div class="btn-box">
-                      <a href="" class="btn1">
+                      <a href="{{route('newpost')}}" class="btn1">
                         Νέο Blog!
                       </a>
-                      <a href="{{route('todo')}}" class="btn2">
+                      <a href="{{route('about')}}" class="btn2">
                         Σχετικά με εμάς
                       </a>
                     </div>
@@ -49,10 +49,10 @@
                       Κάθε ιστορία αξίζει να ακουστεί. Δημιούργησε το δικό σου blog και μοιράσου σκέψεις, εμπειρίες και όνειρα με τον κόσμο.
                     </p>
                     <div class="btn-box">
-                      <a href="" class="btn1">
+                      <a href="{{route('newpost')}}" class="btn1">
                         Νέο Blog!
                       </a>
-                      <a href="{{route('todo')}}" class="btn2" class="btn2">
+                      <a href="{{route('about')}}" class="btn2" class="btn2">
                         Σχετικά με εμάς
                       </a>
                     </div>
@@ -79,10 +79,10 @@
                       Δώσε μορφή στις σκέψεις σου. Ξεκίνα το blog σου και δες τις ιδέες σου να ζωντανεύουν μέσα από λέξεις.
                     </p>
                     <div class="btn-box">
-                      <a href="" class="btn1">
+                      <a href="{{route('newpost')}}" class="btn1">
                         Νέο Blog!
                       </a>
-                      <a href="{{route('todo')}}" class="btn2" class="btn2">
+                      <a href="{{route('about')}}" class="btn2" class="btn2">
                         Σχετικά με εμάς
                       </a>
                     </div>
@@ -128,7 +128,7 @@
             <p>
               Είμαστε μια πλατφόρμα για όλους όσους αγαπούν να γράφουν, να μοιράζονται και να εμπνέουν. Εδώ, κάθε φωνή έχει χώρο. Δημιούργησε το δικό σου blog, ανέβασε τις σκέψεις σου και συνδέσου με ανθρώπους που σε διαβάζουν πραγματικά.Το blog σου, η ιστορία σου. Εμείς σου δίνουμε το βήμα — εσύ δίνεις το νόημα.
             </p>
-            <a href="{{route('todo')}}" class="btn2" class="btn2">
+            <a href="{{route('about')}}" class="btn2" class="btn2">
               Περισσότερα
             </a>
           </div>
@@ -144,68 +144,44 @@
   <section class="blog_section layout_padding">
     <div class="container">
       <div class="heading_container">
-        <h2>
-          Latest Blog
-        </h2>
+        <h2>Latest Blog</h2>
       </div>
       <div class="row">
-        <div class="col-md-6 col-lg-4 mx-auto">
-          <div class="box">
-            <div class="img-box">
-              <img src="images/b1.jpg" alt="">
-            </div>
-            <div class="detail-box">
-              <h5>
-                Look even slightly believable. If you are
-              </h5>
-              <p>
-                alteration in some form, by injected humour, or randomised words which don't look even slightly believable.
-              </p>
-              <a href="">
-                Read More
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-4 mx-auto">
-          <div class="box">
-            <div class="img-box">
-              <img src="images/b2.jpg" alt="">
-            </div>
-            <div class="detail-box">
-              <h5>
-                Anything embarrassing hidden in the middle
-              </h5>
-              <p>
-                alteration in some form, by injected humour, or randomised words which don't look even slightly believable.
-              </p>
-              <a href="">
-                Read More
-              </a>
+        @forelse ($latestPosts as $post)
+          <div class="col-md-6 col-lg-4 mx-auto mb-4">
+            <div class="box">
+              <div class="img-box">
+                @if($post->image)
+                  <img src="{{ asset('storage/uploads/' . $post->image) }}" alt="Εικόνα άρθρου" class="img-fluid">
+                @else
+                  <img src="{{ asset('images/b1.jpg') }}" alt="Προεπιλεγμένη εικόνα" class="img-fluid">
+                @endif
+              </div>
+              
+              <div class="detail-box">
+                <h5>{{ $post->title }}</h5>
+                <p style="
+                  display: -webkit-box;
+                  -webkit-line-clamp: 3;
+                  -webkit-box-orient: vertical;
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+                ">
+                  {{ $post->body }}
+                </p>
+                <a href="{{ route('post', $post) }}">
+                  Διαβάστε περισσότερα
+                </a>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="col-md-6 col-lg-4 mx-auto">
-          <div class="box">
-            <div class="img-box">
-              <img src="images/b3.jpg" alt="">
-            </div>
-            <div class="detail-box">
-              <h5>
-                Molestias magni natus dolores odio commodi. Quaerat!
-              </h5>
-              <p>
-                alteration in some form, by injected humour, or randomised words which don't look even slightly believable.
-              </p>
-              <a href="">
-                Read More
-              </a>
-            </div>
-          </div>
-        </div>
+        @empty
+          <p class="text-center">Δεν υπάρχουν αναρτήσεις προς το παρόν.</p>
+        @endforelse
       </div>
     </div>
   </section>
+
 
   <!-- end blog section -->
 
@@ -215,7 +191,7 @@
     <div class="container">
       <div class="heading_container">
         <h2>
-          Testimonial
+          Κριτικες
         </h2>
       </div>
       <div id="carouselExample2Controls" class="carousel slide" data-ride="carousel">
