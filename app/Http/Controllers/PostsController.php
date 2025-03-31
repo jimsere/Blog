@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use Purifier;
 use App\Models\Post;
 use Auth;
 
@@ -33,7 +34,7 @@ class PostsController extends Controller
 
         $post = new Post();
         $post->title = $request->title;
-        $post->body = $request->body;
+        $post->body = Purifier::clean($request->body);
         $post->category = $request->category;
         $post->user_id = Auth::id();
 

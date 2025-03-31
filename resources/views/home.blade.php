@@ -167,7 +167,7 @@
                   overflow: hidden;
                   text-overflow: ellipsis;
                 ">
-                  {{ $post->body }}
+                {!! strip_tags(Str::limit($post->body, 250)) !!}
                 </p>
                 <a href="{{ route('post', $post) }}">
                   Διαβάστε περισσότερα

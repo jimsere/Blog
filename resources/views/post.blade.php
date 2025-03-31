@@ -25,7 +25,10 @@
 
     <!-- Κείμενο -->
     <div class="mb-4" style="text-align: justify; font-size: 18px;">
-        {{ $post->body }}
+        <div class="post-body">
+            {!! $post->body !!}
+        </div>
+        
     </div>
 
     <!-- Buttons -->

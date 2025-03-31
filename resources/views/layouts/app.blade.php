@@ -28,8 +28,7 @@
 
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"></script>
-
-
+  
 
   <!-- fonts style -->
   <link href="https://fonts.googleapis.com/css?family=Poppins:400,600,700&display=swap" rel="stylesheet" />
@@ -114,6 +113,9 @@
 
     @yield('content')
 
+
+    {{--Φορτωνω Εναν επεξεργαστη κειμενουν χρησιμοποιοντας το api του το οποιο περναω για ολους τους χρηστες με μονο μιας μεσα στο site μου--}}
+    @stack('scripts') {{-- Αυτό είναι απαραίτητο για να φορτωθεί ο TinyMCE --}}
 
 
 
