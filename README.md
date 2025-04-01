@@ -36,7 +36,9 @@
 ### 🏠 Αρχική Σελίδα Blog
 Εμφανίζει όλα τα άρθρα σε μορφή καρτών.
 
-![Αρχική σελίδα](home.png)
+Αρχική σελίδα
+
+![Image](https://github.com/user-attachments/assets/e1494ae2-a02b-49db-9494-45c6c1241850)
 
 
 ---
