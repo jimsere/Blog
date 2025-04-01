@@ -64,14 +64,22 @@
 ## 🚀 Οδηγίες Εγκατάστασης (τοπικά)
 
 ```bash
-git clone https://github.com/yourusername/MyLaravelBlog.git
+git clone https://github.com/jimsere/MyLaravelBlog.git
 cd MyLaravelBlog
 composer install
 cp .env.example .env
 php artisan key:generate
 php artisan migrate
 php artisan serve
+```
 
-📬 Επικοινωνία
-Για ερωτήσεις ή προτάσεις: 📧 info@blog.com
+---
+
+## 📬 Επικοινωνία
+Για ερωτήσεις ή προτάσεις: 📧 info@dimitrisserefias@gmail.com
 🌍 Θεσσαλονίκη, Ελλάδα
+
+---
+
+## 🖤 Ευχαριστώ!
+Αν σου άρεσε το project, κάνε ένα ⭐ στο repo!
