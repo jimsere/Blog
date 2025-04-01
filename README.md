@@ -46,10 +46,13 @@
 
 ---
 
-### 👁️ Σελίδα Προβολής Post
+### 👁️ Σελίδα Προβολής Posts
 
-![Προβολή άρθρου](screenshots/post-view.png)
+![Image](https://github.com/user-attachments/assets/fa7f4a2c-a102-4d97-9b19-b6f8e70066ff)
+---
+### 👁️ Σελίδα Προβολής για το κάθε post
 
+![Image](https://github.com/user-attachments/assets/fa7f4a2c-a102-4d97-9b19-b6f8e70066ff)
 ---
 ### 📬 Σύνδεση στον ιστότοπο
 
