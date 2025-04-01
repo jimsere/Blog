@@ -9,11 +9,23 @@
     </h1>
 
     <!-- Κατηγορία + Ημερομηνία -->
-    <p class="text-center text-muted mb-4" style="font-size: 18px;">
-        <strong>Κατηγορία:</strong> {{ $post->category }} &nbsp; | &nbsp;
-        ⏰ {{ $post->created_at->format('d/m/Y H:i') }} &nbsp; | &nbsp;
-        👁️ {{ $post->views }} προβολές
-    </p>
+    <div class="d-flex justify-content-center align-items-center mb-4 flex-wrap text-muted" style="font-size: 18px;">
+        <div>
+            <strong>Κατηγορία:</strong> {{ $post->category }} &nbsp; | &nbsp;
+            ⏰ {{ $post->created_at->format('d/m/Y H:i') }} &nbsp; | &nbsp;
+            👁️ {{ $post->views }} προβολές
+        </div>
+        <div class="ms-3">
+            <a href="{{ route('post', $post->slug) }}" target="_blank" style="font-size: 14px; text-decoration: underline; color: #6c757d; margin-left:10px;">
+                🔗Προβολή
+            </a>
+            &nbsp;|&nbsp;
+            <a href="javascript:void(0);" onclick="copyToClipboard('{{ route('post', $post->slug) }}')" style="font-size: 14px; text-decoration: underline; color: #6c757d;">
+                📋Αντιγραφή
+            </a>
+        </div>
+    </div>
+    
 
     <!-- Εικόνα αν υπάρχει -->
     @if($post->image)
@@ -28,17 +40,25 @@
         <div class="post-body">
             {!! $post->body !!}
         </div>
-        
     </div>
 
     <!-- Buttons -->
-    @if(Auth::check() && Auth::user()->id == $post->user->id)
-        <div class="d-flex gap-2">
-            <a href="{{ route('post.edit', $post) }}" class="btn btn-success">Επεξεργασία</a>
-            <a href="{{ route('post.delete', $post) }}" class="btn btn-danger">Διαγραφή</a>
-        </div>
-    @endif
+    <!-- Buttons -->
+@if(Auth::check() && Auth::user()->id == $post->user->id)
+<div class="d-flex justify-content-center flex-wrap gap-2 mt-4">
+    <a href="{{ route('post.edit', $post->slug) }}" class="btn btn-success">✏️ Επεξεργασία</a>
+    <a href="{{ route('post.delete', $post->slug) }}" class="btn btn-danger">🗑️ Διαγραφή</a>
+</div>
+@endif
 
 </div>
 @endsection
-
+<script>
+    function copyToClipboard(text) {
+        navigator.clipboard.writeText(text).then(function () {
+            alert("Ο σύνδεσμος αντιγράφηκε!");
+        }, function (err) {
+            alert("Σφάλμα στην αντιγραφή.");
+        });
+    }
+</script>

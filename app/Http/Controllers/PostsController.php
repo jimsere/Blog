@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Purifier;
 use App\Models\Post;
 use Auth;
+use Illuminate\Support\Str;
 
 class PostsController extends Controller
 {
@@ -24,6 +25,7 @@ class PostsController extends Controller
     public function newpost(Request $request)
 {
     if ($request->isMethod('post')) {
+        $post->slug = Str::slug($request->title);
 
         $request->validate([
             'title' => 'required|string|max:255',

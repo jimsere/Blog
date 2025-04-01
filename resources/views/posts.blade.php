@@ -57,7 +57,7 @@
                  {!! strip_tags(Str::limit($post->body, 250)) !!}
               </p>
               <p><strong>Κατηγορία:</strong> {{ $post->category }}</p>
-              <a href="{{ route('post', $post) }}">Περισσότερα</a>
+              <a href="{{ route('post', $post->slug) }}">Περισσότερα</a>
             </div>
           </div>
         </div>

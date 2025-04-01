@@ -30,8 +30,8 @@ Route::get('/', function () {
 Route::middleware('auth')->group(function () {
     Route::any('/newpost', [PostsController::class, 'newpost'])->name('newpost')->middleware('auth');//easy way to navigate in pages dynamically
     Route::get('/post/{post}', [PostsController::class, 'post'])->name('post')->middleware('auth');//easy way to navigate in pages dynamically
-    Route::any('/edit_post/{post}', [PostsController::class, 'edit_post'])->name('post.edit')->middleware('auth');//easy way to navigate in pages dynamically
-    Route::get('/delete_post/{post}', [PostsController::class, 'delete_post'])->name('post.delete');
+    Route::any('/edit_post/{post:slug}', [PostsController::class, 'edit_post'])->name('post.edit')->middleware('auth');//easy way to navigate in pages dynamically
+    Route::get('/delete_post/{post:slug}', [PostsController::class, 'delete_post'])->name('post.delete');
 
 });
 
@@ -46,7 +46,7 @@ Route::get('/contactForm', function () {
 
 Route::any('/search', [PostsController::class, 'search'])->name('search');
 
-Route::get('/todo', function(){return view('todo');})->name('todo');
+Route::get('/contact', function(){return view('contact');})->name('contact');
 
 Route::get('/About', function(){return view('about');})->name('about');
 
@@ -55,4 +55,6 @@ Auth::routes();
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-Route::match(['get', 'post'], '/post/{post}/edit', [PostsController::class, 'edit_post'])->name('post.edit');
+Route::get('/post/{post:slug}', [PostsController::class, 'post'])->name('post')->middleware('auth');
+
+Route::post('/contact/send', [App\Http\Controllers\ContactController::class, 'send'])->name('contact.send');

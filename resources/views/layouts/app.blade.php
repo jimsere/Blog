@@ -72,7 +72,7 @@
                 <a class="nav-link" href="{{route('posts')}}">Blog</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="{{route('todo')}}">Contact Us</a>
+                <a class="nav-link" href="{{route('contact')}}">Contact Us</a>
               </li>
 
               @guest
@@ -120,88 +120,124 @@
 
 
     <!-- Info Section -->
-<section class="info_section long_section">
+<section class="info_section py-5 text-white" style="background-color: #212529;">
   <div class="container">
-    <!-- Contact Navigation -->
-    <div class="contact_nav">
-      <a href="#">
-        <i class="fa fa-phone" aria-hidden="true"></i>
-        <span>Call : +30 239202191800</span>
-      </a>
-      <a href="#">
-        <i class="fa fa-envelope" aria-hidden="true"></i>
-        <span>Email : info@blog.com</span>
-      </a>
-      <a href="#">
-        <i class="fa fa-map-marker" aria-hidden="true"></i>
-        <span>Location: World</span>
-      </a>
-    </div>
+    <div class="row justify-content-between">
 
-    <!-- Info Top -->
-    <div class="info_top">
-      <div class="row">
-        <!-- Quick Links -->
-        <div class="col-sm-6 col-md-4 col-lg-3">
-          <div class="info_links">
-            <h4>QUICK LINKS</h4>
-            <div class="info_links_menu">
-              <a href="index.html">Home</a>
-              <a href="about.html">About</a>
-              <a href="furniture.html">Furniture</a>
-              <a href="blog.html">Blog</a>
-              <a href="contact.html">Contact Us</a>
-            </div>
+      <!-- Contact Navigation -->
+      <div class="col-md-4 mb-4">
+        <h5 class="mb-3">Επικοινωνία</h5>
+        <ul class="list-unstyled">
+          <li class="mb-2">
+            <i class="fa fa-phone me-2"></i> Call: <a href="tel:+302392021918" class="text-decoration-none text-light">+30 23920 2191800</a>
+          </li>
+          <li class="mb-2">
+            <i class="fa fa-envelope me-2"></i> Email: <a href="mailto:info@blog.com" class="text-decoration-none text-light">info@blog.com</a>
+          </li>
+          <li>
+            <i class="fa fa-map-marker me-2"></i> Location: World
+          </li>
+        </ul>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="col-md-2 mb-4">
+        <h5 class="mb-3">Γρήγοροι Σύνδεσμοι</h5>
+        <ul class="list-unstyled">
+          <li><a href="/" class="text-decoration-none text-light">🏠 Home</a></li>
+          <li><a href="/About" class="text-decoration-none text-light">ℹ️ About</a></li>
+          <li><a href="/posts" class="text-decoration-none text-light">📝 Blog</a></li>
+          <li><a href="/contact" class="text-decoration-none text-light">📬 Contact</a></li>
+        </ul>
+      </div>
+
+        <!-- Calendar Section -->
+        <div class="col-md-3 mb-4">
+          <h5 class="mb-3">Ημερολόγιο</h5>
+          <div id="calendar" class="bg-dark rounded p-3 text-white small" style="font-family: monospace;">
+            <div id="calendar-header" class="text-center fw-bold mb-2"></div>
+            <div id="calendar-days" class="d-grid calendar-grid text-center"></div>
           </div>
+        </div>
+
+
+
+      <!-- Newsletter -->
+      <div class="col-md-3 mb-4">
+        <h5 class="mb-3">Εγγραφή στο Newsletter</h5>
+        <form action="#">
+          <div class="mb-2">
+            <input type="email" class="form-control" placeholder="Enter your email" required>
+          </div>
+          <button type="submit" class="btn btn-outline-light w-100">Subscribe</button>
+        </form>
+
+        <!-- Social Icons -->
+        <div class="social_box mt-3 d-flex justify-content-center gap-3">
+          <a href="#" class="text-light fs-4"><i class="fa fa-facebook"></i></a>
+          <a href="#" class="text-light fs-4"><i class="fa fa-twitter"></i></a>
+          <a href="#" class="text-light fs-4"><i class="fa fa-linkedin"></i></a>
+          <a href="#" class="text-light fs-4"><i class="fa fa-instagram"></i></a>
         </div>
         
-        <!-- Instagram Feeds -->
-        <div class="col-sm-6 col-md-4 col-lg-3 mx-auto">
-          <div class="info_post">
-            <h5>INSTAGRAM FEEDS</h5>
-            <div class="post_box">
-              <div class="img-box"><img src="images/f1.png" alt=""></div>
-              <div class="img-box"><img src="images/f2.png" alt=""></div>
-              <div class="img-box"><img src="images/f3.png" alt=""></div>
-              <div class="img-box"><img src="images/f4.png" alt=""></div>
-              <div class="img-box"><img src="images/f5.png" alt=""></div>
-              <div class="img-box"><img src="images/f6.png" alt=""></div>
-            </div>
-          </div>
-        </div>
-        
-        <!-- Newsletter Signup -->
-        <div class="col-md-4">
-          <div class="info_form">
-            <h4>SIGN UP TO OUR NEWSLETTER</h4>
-            <form action="">
-              <input type="email" placeholder="Enter Your Email" required />
-              <button type="submit">Subscribe</button>
-            </form>
-            
-            <!-- Social Media Icons -->
-            <div class="social_box">
-              <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-              <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-              <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
-              <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   </div>
 </section>
-<!-- End Info Section -->
+
+<!-- Footer Bottom -->
+<footer class="footer_section py-3 text-center text-white" style="background-color: #111;">
+  <div class="container">
+    <p class="mb-0">
+      &copy; <span id="displayYear">{{ date('Y') }}</span> All Rights Reserved by
+      <a href="https://html.design/" class="text-decoration-none text-light fw-bold">Free Html Templates</a>
+    </p>
+  </div>
+</footer>
 
 
-  <!-- footer section -->
-  <footer class="footer_section">
-    <div class="container">
-      <p>
-        &copy; <span id="displayYear"></span> All Rights Reserved By
-        <a href="https://html.design/">Free Html Templates</a>
-      </p>
-    </div>
-  </footer>
-  <!-- footer section -->
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const daysContainer = document.getElementById("calendar-days");
+    const header = document.getElementById("calendar-header");
+
+    const now = new Date();
+    const year = now.getFullYear();
+    const month = now.getMonth();
+    const today = now.getDate();
+
+    const monthNames = [
+      "Ιανουάριος", "Φεβρουάριος", "Μάρτιος", "Απρίλιος", "Μάιος", "Ιούνιος",
+      "Ιούλιος", "Αύγουστος", "Σεπτέμβριος", "Οκτώβριος", "Νοέμβριος", "Δεκέμβριος"
+    ];
+
+    header.textContent = `${monthNames[month]} ${year}`;
+
+    const firstDay = new Date(year, month, 1).getDay();
+    const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+    const dayNames = ['Κ', 'Δ', 'Τ', 'Τ', 'Π', 'Π', 'Σ'];
+    dayNames.forEach(d => {
+      const el = document.createElement('div');
+      el.textContent = d;
+      el.className = "day-label";
+      daysContainer.appendChild(el);
+    });
+
+    for (let i = 0; i < firstDay; i++) {
+      daysContainer.appendChild(document.createElement('div'));
+    }
+
+    for (let day = 1; day <= daysInMonth; day++) {
+      const el = document.createElement('div');
+      el.textContent = day;
+      if (day === today) {
+        el.className = "today";
+      }
+      daysContainer.appendChild(el);
+    }
+  });
+</script>
+
+  

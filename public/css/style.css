@@ -923,3 +923,28 @@ a:focus {
 .social_box a:hover {
   color: #ff6600;
 }
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+}
+
+.calendar-grid div {
+  padding: 6px 0;
+  border-radius: 4px;
+  font-size: 13px;
+}
+
+.calendar-grid div.today {
+  background-color: #198754;
+  font-weight: bold;
+}
+
+.calendar-grid div.day-label {
+  font-weight: bold;
+  color: #adb5bd;
+}
+.icon-text-space {
+  margin-left: 10px;
+}
