@@ -52,8 +52,7 @@
 ---
 ### 👁️ Σελίδα Προβολής για το κάθε post
 
-![Image](https://github.com/user-attachments/assets/fa7f4a2c-a102-4d97-9b19-b6f8e70066ff)
----
+![Image](https://github.com/user-attachments/assets/62df2474-97d9-45cf-891d-ffecf05e4af8)---
 ### 📬 Σύνδεση στον ιστότοπο
 
 ![Image](https://github.com/user-attachments/assets/050d145b-d1a3-4f6a-b0e9-9c7da0b4d40f)
