@@ -36,7 +36,8 @@
 ### 🏠 Αρχική Σελίδα Blog
 Εμφανίζει όλα τα άρθρα σε μορφή καρτών.
 
-![Αρχική σελίδα]('Screenshots/home.png')
+![Αρχική σελίδα](screenshots/home.png)
+
 
 ---
 
