@@ -1,3 +1,6 @@
+@import './snow.css';
+
+
 .contact-form-container {
     display: flex;
     justify-content: center;
@@ -15,6 +18,10 @@
     background-color: #f9f9f9;
 }
 
-body{background-color: aqua}
+body{background-color: aqua};
 
+body {
+    transform: scale(1.25);
+    transform-origin: top left;
+}
 

@@ -18,8 +18,17 @@
                 <option value="Μουσικη">🎵Μουσική</option>
                 <option value="Πολιτικο">📰Πολιτικό</option>
                 <option value="Ταινιες">🎞️Ταινίες</option>
-                <option value="Χομπι">🎮Χόμπι</option>
-                <option value="Αθληση">⚽Αθληση</option>
+                <option value="Βιβλία">📚 Βιβλία</option>
+                <option value="Συνταγές / Φαγητό">🍔 Συνταγές / Φαγητό</option>
+                <option value="Τεχνολογία">💻 Τεχνολογία</option>
+                <option value="Ταξίδια">✈️ Ταξίδια</option>
+                <option value="Gaming">🎮 Gaming</option>
+                <option value="Ιδέες & Έμπνευση">💡Ιδέες & Έμπνευση</option>
+                <option value="Επικαιρότητα">📰 Επικαιρότητα</option>
+                <option value="Προσωπικά">👤 Προσωπικά</option>
+                <option value="Φύση & Περιβάλλον">🌿 Φύση & Περιβάλλον</option>
+                <option value="Χόμπι & DIY">🧵 Χόμπι & DIY</option>
+
             </select>
 
             <input type="file" name="image" class="form-control mb-3" accept="image/*">

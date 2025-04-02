@@ -19,6 +19,15 @@
               <option value="Ταινιες" {{ request('category') == 'Ταινιες' ? 'selected' : '' }}>🎞️Ταινίες</option>
               <option value="Χομπι" {{ request('category') == 'Χομπι' ? 'selected' : '' }}>🎮Χόμπι</option>
               <option value="Αθληση" {{ request('category') == 'Αθληση' ? 'selected' : '' }}>⚽Αθληση</option>
+              <option value="Βιβλία" {{ request('category') == 'Βιβλία' ? 'selected' : '' }}>📚 Βιβλία</option>
+              <option value="Συνταγές / Φαγητό" {{ request('category') == 'Συνταγές / Φαγητό' ? 'selected' : '' }}>🍔 Συνταγές / Φαγητό</option>
+              <option value="Τεχνολογία" {{ request('category') == 'Τεχνολογία	' ? 'selected' : '' }}>💻 Τεχνολογία</option>
+              <option value="Ταξίδια" {{ request('category') == 'Ταξίδια' ? 'selected' : '' }}>✈️ Ταξίδια</option>
+              <option value="Gaming	" {{ request('category') == 'Gaming			' ? 'selected' : '' }}>🎮 Gaming</option>
+              <option value="Επικαιρότητα	" {{ request('category') == 'Επικαιρότητα' ? 'selected' : '' }}>📰 Επικαιρότητα	</option>
+              <option value="Προσωπικά" {{ request('category') == 'Προσωπικά' ? 'selected' : '' }}>👤 Προσωπικά</option>
+              <option value="Φύση & Περιβάλλον" {{ request('category') == 'Φύση & Περιβάλλον' ? 'selected' : '' }}>💡 🌿 Φύση & Περιβάλλον	</option>
+              <option value="Χόμπι & DIY" {{ request('category') == 'Χόμπι & DIY' ? 'selected' : '' }}>🧵 Χόμπι & DIY</option>
             </select>
           </div>
           <div class="col-sm-2">
@@ -40,7 +49,7 @@
           <div class="box w-100">
             <div class="img-box">
               @if($post->image)
-                <img src="{{ asset('storage/uploads/' . $post->image) }}" alt="Εικόνα blog" class="img-fluid">
+              <img src="{{ asset('storage/uploads/' . $post->image) }}" class="img-fluid post-img">
               @else
                 <img src="{{ asset('images/b1.jpg') }}" alt="Προεπιλεγμένη εικόνα" class="img-fluid">
               @endif

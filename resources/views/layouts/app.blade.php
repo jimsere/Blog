@@ -8,12 +8,12 @@
   <!-- Mobile Metas -->
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
   <!-- Site Metas -->
-  <link rel="icon" href="images/fevicon.png" type="image/gif" />
+  <link rel="icon" href="images/logo.png" type="image/gif" />
   <meta name="keywords" content="" />
   <meta name="description" content="" />
   <meta name="author" content="" />
 
-  <title>Blog Site</title>
+  <title>e-bloggers</title>
 
 
   <!-- bootstrap core css -->
@@ -50,38 +50,38 @@
     <!-- header section strats -->
     <header class="header_section long_section px-0">
       <nav class="navbar navbar-expand-lg custom_nav-container ">
-        <a class="navbar-brand" href="#">
-          <span>
-            Blog Site
-          </span>
+        <a class="navbar-brand" href="{{ route('home') }}">
+          <img src="{{ asset('images/logo.png') }}" alt="e-bloggers logo">
         </a>
+        
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class=""> </span>
+          <span class=""> </span> 
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <div class="d-flex mx-auto flex-column flex-lg-row align-items-center">
             <ul class="navbar-nav  ">
               <li class="nav-item active">
-                <a class="nav-link" href="{{route('home')}}">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="{{route('home')}}">Αρχικη<span class="sr-only">(current)</span></a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="{{route('about')}}"> About</a>
+                <a class="nav-link" href="{{route('about')}}"> Σχετικα</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="{{route('posts')}}">Blog</a>
+                <a class="nav-link" href="{{route('posts')}}">Blogs</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="{{route('contact')}}">Contact Us</a>
+                <a class="nav-link" href="{{route('contact')}}">Επικοινωνια</a>
               </li>
+
 
               @guest
               <li class="nav-item last">
-                  <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                  <a class="nav-link" href="{{ route('login') }}">{{ __('Συνδεση') }}</a>
               </li>
           @if (Route::has('register'))
               <li class="nav-item last">
-                  <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                  <a class="nav-link" href="{{ route('register') }}">{{ __('Εγγραφη') }}</a>
               </li>
           @endif
           @else
@@ -94,7 +94,7 @@
                           <a class="dropdown-item" href="{{ route('logout') }}"
                           onclick="event.preventDefault();
                                           document.getElementById('logout-form').submit();">
-                              {{ __('Logout') }}
+                              {{ __('Αποσύνδεση') }}
                           </a>
 
                           <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
@@ -103,7 +103,12 @@
                       </div>
                   </li>
               @endguest
-
+              @auth
+              <li class="nav-item">
+                <a class="nav-link" href="{{ route('profile') }}">προφιλ👤</a>
+              </li>
+              @endauth
+              
             </ul>
           </div>
         </div>
@@ -129,25 +134,29 @@
         <h5 class="mb-3">Επικοινωνία</h5>
         <ul class="list-unstyled">
           <li class="mb-2">
-            <i class="fa fa-phone me-2"></i> Call: <a href="tel:+302392021918" class="text-decoration-none text-light">+30 23920 2191800</a>
+            <a href="tel:+302392021918" class="text-decoration-none text-light">
+              <i class="fa fa-phone me-2"></i> Τηλέφωνο: +30 23920 2191800
+            </a>
           </li>
-          <li class="mb-2">
-            <i class="fa fa-envelope me-2"></i> Email: <a href="mailto:info@blog.com" class="text-decoration-none text-light">info@blog.com</a>
-          </li>
+          <a href="mailto:info@blog.com" class="text-decoration-none text-light">
+            <i class="fa fa-envelope me-2"></i> Email: info@blog.com
+          </a>          
           <li>
-            <i class="fa fa-map-marker me-2"></i> Location: World
+            <i class="fa fa-map-marker me-2"></i> Τοποθεσία: Θεσσαλονίκη
           </li>
         </ul>
       </div>
-
+    
+      
       <!-- Quick Links -->
       <div class="col-md-2 mb-4">
         <h5 class="mb-3">Γρήγοροι Σύνδεσμοι</h5>
         <ul class="list-unstyled">
-          <li><a href="/" class="text-decoration-none text-light">🏠 Home</a></li>
-          <li><a href="/About" class="text-decoration-none text-light">ℹ️ About</a></li>
-          <li><a href="/posts" class="text-decoration-none text-light">📝 Blog</a></li>
-          <li><a href="/contact" class="text-decoration-none text-light">📬 Contact</a></li>
+          <li><a href="/" class="text-decoration-none text-light">🏠 Αρχική</a></li>
+          <li><a href="/About" class="text-decoration-none text-light">ℹ️ Σχετικά</a></li>
+          <li><a href="/posts" class="text-decoration-none text-light">📝 Blogs</a></li>
+          <li><a href="/contact" class="text-decoration-none text-light">📬 Επικοινωνία</a></li>
+          <li><a href="/profile" class="text-decoration-none text-light">👤 Το Προφίλ μου</a></li>
         </ul>
       </div>
 
@@ -188,9 +197,9 @@
 <!-- Footer Bottom -->
 <footer class="footer_section py-3 text-center text-white" style="background-color: #111;">
   <div class="container">
-    <p class="mb-0">
+    <p class="mb-0 white-text">
       &copy; <span id="displayYear">{{ date('Y') }}</span> All Rights Reserved by
-      <a href="https://html.design/" class="text-decoration-none text-light fw-bold">Free Html Templates</a>
+      <a href="https://html.design/" class="white-text text-decoration-none fw-bold">Free Html Templates</a>
     </p>
   </div>
 </footer>
@@ -238,6 +247,21 @@
       daysContainer.appendChild(el);
     }
   });
+
+  //Για το sticky header
+  document.addEventListener("DOMContentLoaded", function () {
+    const header = document.querySelector(".header_section");
+
+    window.addEventListener("scroll", function () {
+      if (window.scrollY > 10) {
+        header.classList.add("scrolled");
+      } else {
+        header.classList.remove("scrolled");
+      }
+    });
+  });
+
+
 </script>
 
   

@@ -32,6 +32,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/post/{post}', [PostsController::class, 'post'])->name('post')->middleware('auth');//easy way to navigate in pages dynamically
     Route::any('/edit_post/{post:slug}', [PostsController::class, 'edit_post'])->name('post.edit')->middleware('auth');//easy way to navigate in pages dynamically
     Route::get('/delete_post/{post:slug}', [PostsController::class, 'delete_post'])->name('post.delete');
+    Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'show'])->name('profile');
+    Route::post('/profile/update', [App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
 
 });
 
@@ -58,3 +60,4 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/post/{post:slug}', [PostsController::class, 'post'])->name('post')->middleware('auth');
 
 Route::post('/contact/send', [App\Http\Controllers\ContactController::class, 'send'])->name('contact.send');
+

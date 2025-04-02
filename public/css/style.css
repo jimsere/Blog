@@ -948,3 +948,80 @@ a:focus {
 .icon-text-space {
   margin-left: 10px;
 }
+.navbar-nav .nav-link {
+  position: relative;
+  padding-bottom: 5px;
+  transition: all 0.3s ease;
+}
+
+/* Εξαιρούμε το dropdown toggle */
+.navbar-nav .nav-link:not(.dropdown-toggle)::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  left: 0;
+  bottom: 0;
+  background-color: #28a745;
+  transition: width 0.3s;
+}
+
+.navbar-nav .nav-link:not(.dropdown-toggle):hover::after {
+  width: 100%;
+}
+
+.fade-in-page {
+  opacity: 0;
+  animation: fadeIn 1s ease-in forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+.info_section i.fa-phone,
+.info_section i.fa-envelope,
+.info_section i.fa-map-marker {
+  font-size: 1.3rem; /* Μπορείς να το αυξήσεις π.χ. σε 1.5rem */
+  margin-right: 8px;
+}
+.header_section {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  transition: all 0.3s ease;
+  background-color: white; /* για να μην είναι διάφανο */
+}
+
+.header_section.scrolled {
+  transform: scale(1.01);
+  box-shadow: 0 4px 12px rgba(40, 167, 69, 0.3); /* πράσινη σκιά */
+}
+.theme-toggle-btn {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  z-index: 9999;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 30px;
+  font-size: 14px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.theme-toggle-btn:hover {
+  background-color: #218838;
+}
+.post-img {
+  height: 200px;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 5px;
+}
+.white-text {
+  color: #fff !important;
+}

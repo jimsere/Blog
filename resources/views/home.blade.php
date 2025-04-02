@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+  <div class="fade-in-page">
 
     <!-- slider section -->
     <section class="slider_section long_section">
@@ -152,7 +153,7 @@
             <div class="box">
               <div class="img-box">
                 @if($post->image)
-                  <img src="{{ asset('storage/uploads/' . $post->image) }}" alt="Εικόνα άρθρου" class="img-fluid">
+                <img src="{{ asset('storage/uploads/' . $post->image) }}" class="img-fluid post-img">
                 @else
                   <img src="{{ asset('images/b1.jpg') }}" alt="Προεπιλεγμένη εικόνα" class="img-fluid">
                 @endif
@@ -281,6 +282,7 @@
         </div>
       </div>
     </div>
+  </div>
   </section>
 
   <!-- end client section -->
