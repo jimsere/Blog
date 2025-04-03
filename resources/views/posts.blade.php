@@ -11,32 +11,57 @@
         <div class="row w-100">
           <div class="col-sm-8">
             <input class="form-control w-100" type="search" placeholder="Αναζήτηση" aria-label="Search" name="q">
-            <select name="category" class="form-control" onchange="this.form.submit()" style="margin-top:20px">
-              <option value="">Όλες οι κατηγορίες</option>
-              <option value="Ψυχολογία" {{ request('category') == 'Ψυχολογία' ? 'selected' : '' }}>🧠Ψυχολογία</option>
-              <option value="Μουσικη" {{ request('category') == 'Μουσικη' ? 'selected' : '' }}>🎵Μουσική</option>
-              <option value="Πολιτικο" {{ request('category') == 'Πολιτικο' ? 'selected' : '' }}>📰Πολιτικό</option>
-              <option value="Ταινιες" {{ request('category') == 'Ταινιες' ? 'selected' : '' }}>🎞️Ταινίες</option>
-              <option value="Χομπι" {{ request('category') == 'Χομπι' ? 'selected' : '' }}>🎮Χόμπι</option>
-              <option value="Αθληση" {{ request('category') == 'Αθληση' ? 'selected' : '' }}>⚽Αθληση</option>
-              <option value="Βιβλία" {{ request('category') == 'Βιβλία' ? 'selected' : '' }}>📚 Βιβλία</option>
-              <option value="Συνταγές / Φαγητό" {{ request('category') == 'Συνταγές / Φαγητό' ? 'selected' : '' }}>🍔 Συνταγές / Φαγητό</option>
-              <option value="Τεχνολογία" {{ request('category') == 'Τεχνολογία	' ? 'selected' : '' }}>💻 Τεχνολογία</option>
-              <option value="Ταξίδια" {{ request('category') == 'Ταξίδια' ? 'selected' : '' }}>✈️ Ταξίδια</option>
-              <option value="Gaming	" {{ request('category') == 'Gaming			' ? 'selected' : '' }}>🎮 Gaming</option>
-              <option value="Επικαιρότητα	" {{ request('category') == 'Επικαιρότητα' ? 'selected' : '' }}>📰 Επικαιρότητα	</option>
-              <option value="Προσωπικά" {{ request('category') == 'Προσωπικά' ? 'selected' : '' }}>👤 Προσωπικά</option>
-              <option value="Φύση & Περιβάλλον" {{ request('category') == 'Φύση & Περιβάλλον' ? 'selected' : '' }}>💡 🌿 Φύση & Περιβάλλον	</option>
-              <option value="Χόμπι & DIY" {{ request('category') == 'Χόμπι & DIY' ? 'selected' : '' }}>🧵 Χόμπι & DIY</option>
-            </select>
+            @php
+              $currentCategory = request()->segment(2); // π.χ. /category/Ψυχολογία → "Ψυχολογία"
+            @endphp
+
+            @php
+            $categories = [
+                'psikhologia' => '🧠 Ψυχολογία',
+                'mousiki' => '🎵 Μουσική',
+                'politiko' => '📰 Πολιτικό',
+                'tainies' => '🎞️ Ταινίες',
+                'hobby' => '🎮 Χόμπι',
+                'athlisi' => '⚽ Άθληση',
+                'vivlia' => '📚 Βιβλία',
+                'syntages-faghto' => '🍔 Συνταγές & Φαγητό',
+                'texnologia' => '💻 Τεχνολογία',
+                'taxidia' => '✈️ Ταξίδια',
+                'gaming' => '🎮 Gaming',
+                'epikairotita' => '📰 Επικαιρότητα',
+                'prosopika' => '👤 Προσωπικά',
+                'fysi-perivallon' => '🌿 Φύση & Περιβάλλον',
+                'idees-empnefsi' => '💡 Ιδέες & Έμπνευση',
+                'hobby-diy' => '🧵 Χόμπι & DIY',
+            ];
+
+            $currentCategory = request()->segment(1); // π.χ. mousiki
+            @endphp
+
+<select class="form-control" onchange="if(this.value) window.location.href=this.value;" style="margin-top:20px">
+  <option value="{{ url('/posts') }}">Όλες οι κατηγορίες</option>
+  @foreach($categories as $slug => $label)
+      <option value="{{ url("/category/$slug") }}" {{ request()->segment(2) == $slug ? 'selected' : '' }}>
+          {{ $label }}
+      </option>
+  @endforeach
+</select>
+
+
+
+
+
           </div>
-          <div class="col-sm-2">
+          <div class="col-12 col-sm-6 col-md-2 mt-2 mt-md-0">
             <button class="btn btn-outline-success w-100" type="submit">Αναζήτηση</button>
-          </div>
+          </div>          
           @if (Auth::check())
-          <div class="col-sm-2 text-end">
+          @if (Auth::check())
+          <div class="col-12 col-sm-6 col-md-2 mt-2 mt-md-0 text-sm-end">
             <a href="{{ route('newpost') }}" class="btn btn-success w-100">Νέα Ανάρτηση</a>
           </div>
+          @endif
+
           @endif
         </div>
       </form>
@@ -63,7 +88,7 @@
                 overflow: hidden;
                 text-overflow: ellipsis;
               ">
-                 {!! strip_tags(Str::limit($post->body, 250)) !!}
+              {{ Str::limit(strip_tags(html_entity_decode($post->body)), 250) }}
               </p>
               <p><strong>Κατηγορία:</strong> {{ $post->category }}</p>
               <a href="{{ route('post', $post->slug) }}">Περισσότερα</a>

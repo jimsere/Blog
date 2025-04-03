@@ -3,61 +3,30 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ContactController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
-Route::get('/', function () {
-    return view('home');
-})->name('home');
+Route::get('/posts', [PostsController::class, 'index'])->name('posts');
 
-// Route::get('/posts', function () {
-//     return view('posts', ['posts' => [
-//         'post 1',
-//         'post 2',
-//         'post 3'       
-//     ]]);
-// });
+Route::get('/contact', fn() => view('contact'))->name('contact');
+Route::get('/about', fn() => view('about'))->name('about');
+Route::any('/search', [PostsController::class, 'search'])->name('search');
+Route::post('/contact/send', [ContactController::class, 'send'])->name('contact.send');
 
 Route::middleware('auth')->group(function () {
-    Route::any('/newpost', [PostsController::class, 'newpost'])->name('newpost')->middleware('auth');//easy way to navigate in pages dynamically
-    Route::get('/post/{post}', [PostsController::class, 'post'])->name('post')->middleware('auth');//easy way to navigate in pages dynamically
-    Route::any('/edit_post/{post:slug}', [PostsController::class, 'edit_post'])->name('post.edit')->middleware('auth');//easy way to navigate in pages dynamically
+    Route::any('/newpost', [PostsController::class, 'newpost'])->name('newpost');
+    Route::any('/edit_post/{post:slug}', [PostsController::class, 'edit_post'])->name('post.edit');
     Route::get('/delete_post/{post:slug}', [PostsController::class, 'delete_post'])->name('post.delete');
-    Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'show'])->name('profile');
-    Route::post('/profile/update', [App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
-
+    Route::get('/profile', [ProfileController::class, 'show'])->name('profile');
+    Route::post('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
 });
 
-
-Route::get('/posts',[PostsController::class, 'index'])->name('posts');
-
-
-Route::get('/contactForm', function () {
-    return view('contactForm')->name('contactForm');
-});
-
-
-Route::any('/search', [PostsController::class, 'search'])->name('search');
-
-Route::get('/contact', function(){return view('contact');})->name('contact');
-
-Route::get('/About', function(){return view('about');})->name('about');
-
-Auth::routes();
-
-Route::get('/', [HomeController::class, 'index']);
-Route::get('/home', [HomeController::class, 'index'])->name('home');
-
+// ✅ Μοναδική διαδρομή για μεμονωμένα posts
 Route::get('/post/{post:slug}', [PostsController::class, 'post'])->name('post')->middleware('auth');
 
-Route::post('/contact/send', [App\Http\Controllers\ContactController::class, 'send'])->name('contact.send');
+// ✅ Κατηγορίες
+Route::get('/category/{slug}', [PostsController::class, 'category'])->name('category');
 
+Auth::routes();

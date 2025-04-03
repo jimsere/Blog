@@ -53,7 +53,7 @@
               <div class="detail-box">
                 <h5>{{ $post->title }}</h5>
                 <p style="display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;">
-                  {!! strip_tags(Str::limit($post->body, 250)) !!}
+                  {{ Str::limit(strip_tags(html_entity_decode($post->body)), 250) }}
                 </p>
                 <a href="{{ route('post', $post) }}">Περισσότερα</a>
               </div>

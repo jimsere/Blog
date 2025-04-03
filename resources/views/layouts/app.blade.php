@@ -135,7 +135,7 @@
         <ul class="list-unstyled">
           <li class="mb-2">
             <a href="tel:+302392021918" class="text-decoration-none text-light">
-              <i class="fa fa-phone me-2"></i> Τηλέφωνο: +30 23920 2191800
+              <i class="fa fa-phone me-2"></i> Τηλέφωνο: +30 23920 21918
             </a>
           </li>
           <a href="mailto:info@blog.com" class="text-decoration-none text-light">
@@ -153,7 +153,7 @@
         <h5 class="mb-3">Γρήγοροι Σύνδεσμοι</h5>
         <ul class="list-unstyled">
           <li><a href="/" class="text-decoration-none text-light">🏠 Αρχική</a></li>
-          <li><a href="/About" class="text-decoration-none text-light">ℹ️ Σχετικά</a></li>
+          <li><a href="/about" class="text-decoration-none text-light">ℹ️ Σχετικά</a></li>
           <li><a href="/posts" class="text-decoration-none text-light">📝 Blogs</a></li>
           <li><a href="/contact" class="text-decoration-none text-light">📬 Επικοινωνία</a></li>
           <li><a href="/profile" class="text-decoration-none text-light">👤 Το Προφίλ μου</a></li>

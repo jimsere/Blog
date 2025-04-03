@@ -25,8 +25,7 @@ class PostsController extends Controller
     public function newpost(Request $request)
 {
     if ($request->isMethod('post')) {
-        $post->slug = Str::slug($request->title);
-
+        
         $request->validate([
             'title' => 'required|string|max:255',
             'body' => 'required|string',
@@ -47,13 +46,14 @@ class PostsController extends Controller
             $post->image = $filename;
         }
 
-        $post->save();
+        $post->save(); // εδώ ενεργοποιείται το booted() => created() στο model
 
         return redirect('/posts')->with('success', 'Το post ανέβηκε με επιτυχία!');
     }
 
     return view('newpost');
 }
+
 
 public function search(Request $request)
 {
@@ -135,6 +135,36 @@ public function delete_post(Post $post){
 
    
 }
+public function category($slug)
+{
+    $categories = [
+        'psikhologia' => 'Ψυχολογία',
+        'mousiki' => 'Μουσική',
+        'politiko' => 'Πολιτικό',
+        'tainies' => 'Ταινίες',
+        'hobby' => 'Χόμπι',
+        'athlisi' => 'Αθληση',
+        'vivlia' => 'Βιβλία',
+        'syntages-faghto' => 'Συνταγές & Φαγητό',
+        'texnologia' => 'Τεχνολογία',
+        'taxidia' => 'Ταξίδια',
+        'gaming' => 'Gaming',
+        'epikairotita' => 'Επικαιρότητα',
+        'prosopika' => 'Προσωπικά',
+        'fysi-perivallon' => 'Φύση & Περιβάλλον',
+        'idees-empnefsi' => 'Ιδέες & Έμπνευση',
+        'hobby-diy' => 'Χόμπι & DIY',
+    ];
 
-
+    if (!array_key_exists($slug, $categories)) {
+        abort(404);
+    }
+    
+    $categoryName = $categories[$slug]; // π.χ. 'Μουσική'
+    
+    $posts = Post::where('category', $categoryName)->latest()->get();
+    
+    return view('posts', compact('posts'));
+    
+}
 }

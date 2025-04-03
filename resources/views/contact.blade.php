@@ -5,42 +5,32 @@
 <div class="container py-5">
     <h1 class="text-center mb-5" style="font-family: 'Great Vibes', cursive; font-size: 60px;">Επικοινωνήστε μαζί μας</h1>
 
-    <div class="row g-5">
+    <div class="row g-5 flex-column flex-md-row">
 
         <!-- Info Icons -->
-        <div class="col-md-6">
+        <div class="col-md-6 mb-4 mb-md-0">
             <div class="d-flex flex-column gap-4">
 
-                <div class="d-flex align-items-center bg-light p-3 rounded shadow-sm">
-                    <i class="fa fa-phone fa-2x text-success "></i>
-                    <div class="ms-2 icon-text-space">
-                        <h5 class="mb-1">Τηλέφωνο</h5>
-                        <p class="mb-0">+30 23920 219800</p>
-                    </div>
+                <div class="d-flex flex-column align-items-center bg-light p-4 rounded text-center" style="box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);">
+                    <i class="fa fa-phone fa-2x text-success mb-2"></i>
+                    <h5 class="mb-1">Τηλέφωνο</h5>
+                    <p class="mb-0">+30 23920 21983</p>
                 </div>
 
-                <div class="d-flex align-items-center bg-light p-3 rounded shadow-sm">
-                    <i class="fa fa-envelope fa-2x text-primary"></i>
-                    <div class="ms-2 icon-text-space">
-                        <h5 class="mb-1">Email</h5>
-                        <p class="mb-0">info@blog.com</p>
-                    </div>
+                <div class="d-flex flex-column align-items-center bg-light p-4 rounded text-center" style="box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);">
+                    <i class="fa fa-envelope fa-2x text-primary mb-2"></i>
+                    <h5 class="mb-1">Email</h5>
+                    <p class="mb-0">info@blog.com</p>
                 </div>
 
-                <div class="d-flex align-items-center bg-light p-3 rounded shadow-sm">
-                    <i class="fa fa-map-marker fa-2x text-danger"></i>
-                    <div class="ms-2 icon-text-space">
-                        <h5 class="mb-1">Τοποθεσία</h5>
-                        <p class="mb-0">Θεσσαλονίκη, Ελλάδα</p>
-                    </div>
+                <div class="d-flex flex-column align-items-center bg-light p-4 rounded text-center" style="box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);">
+                    <i class="fa fa-map-marker fa-2x text-danger mb-2"></i>
+                    <h5 class="mb-1">Τοποθεσία</h5>
+                    <p class="mb-0">Θεσσαλονίκη, Ελλάδα</p>
                 </div>
 
             </div>
         </div>
-
-
-
-
 
         <!-- Contact Form -->
         <div class="col-md-6">
@@ -72,7 +62,6 @@
                 </form>
             </div>
         </div>
-        
 
     </div>
 </div>

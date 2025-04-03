@@ -17,7 +17,18 @@
             <option value="Ταινιες" {{ $post->category == 'Ταινιες' ? 'selected' : '' }}>🎞️ Ταινίες</option>
             <option value="Χομπι" {{ $post->category == 'Χομπι' ? 'selected' : '' }}>🎮 Χόμπι</option>
             <option value="Αθληση" {{ $post->category == 'Αθληση' ? 'selected' : '' }}>⚽ Αθληση</option>
-        </select>
+            <option value="Βιβλία" {{ $post->category == 'Βιβλία' ? 'selected' : '' }}>📚 Βιβλία</option>
+            <option value="Συνταγές / Φαγητό" {{ $post->category == 'Συνταγές / Φαγητό' ? 'selected' : '' }}>🍔 Συνταγές / Φαγητό</option>
+            <option value="Τεχνολογία" {{ $post->category == 'Τεχνολογία' ? 'selected' : '' }}>💻 Τεχνολογία</option>
+            <option value="Ταξίδια" {{ $post->category == 'Ταξίδια' ? 'selected' : '' }}>✈️ Ταξίδια</option>
+            <option value="Gaming" {{ $post->category == 'Gaming' ? 'selected' : '' }}>🎮 Gaming</option>
+            <option value="Επικαιρότητα" {{ $post->category == 'Επικαιρότητα' ? 'selected' : '' }}>📰 Επικαιρότητα</option>
+            <option value="Προσωπικά" {{ $post->category == 'Προσωπικά' ? 'selected' : '' }}>👤 Προσωπικά</option>
+            <option value="Φύση & Περιβάλλον" {{ $post->category == 'Φύση & Περιβάλλον' ? 'selected' : '' }}>🌿 Φύση & Περιβάλλον</option>
+            <option value="Ιδέες & Έμπνευση" {{ $post->category == 'Ιδέες & Έμπνευση' ? 'selected' : '' }}>💡 Ιδέες & Έμπνευση</option>
+            <option value="Χόμπι & DIY" {{ $post->category == 'Χόμπι & DIY' ? 'selected' : '' }}>🧵 Χόμπι & DIY</option>
+          </select>
+          
 
         {{-- Κείμενο --}}
         <textarea name="body" cols="30" rows="8" placeholder="Your text here" class="form-control mb-3">{{ $post->body }}</textarea>
