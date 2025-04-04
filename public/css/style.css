@@ -1025,3 +1025,65 @@ a:focus {
 .white-text {
   color: #fff !important;
 }
+@media (max-width: 768px) {
+  .custom-search,
+  .custom-post-btn {
+    width: 100% !important;
+    display: block;
+    margin-bottom: 10px;
+  }
+}
+@media (max-width: 576px) {
+  /* Container row */
+  .row.w-100 {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 8px !important;
+  }
+
+  /* Input και κατηγορίες */
+  .col-sm-8 {
+    width: 100% !important;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 8px !important;
+  }
+
+  .col-sm-8 input[type="search"] {
+    flex: 1 1 60% !important;
+    width: 60% !important;
+  }
+
+  .col-sm-8 select {
+    flex: 1 1 38% !important;
+    width: 38% !important;
+  }
+
+  /* Κουμπί Αναζήτηση δεξιά από το input */
+  .col-md-2.mt-2,
+  .col-md-2.mt-2.mt-md-0 {
+    width: 100% !important;
+  }
+
+  .col-md-2.mt-2 button {
+    width: 100% !important;
+  }
+
+  /* Κουμπί Νέα Ανάρτηση και Κατηγορίες */
+  .col-12.col-sm-6.col-md-2.mt-2.mt-md-0.text-sm-end,
+  .col-12.col-sm-6.col-md-2.mt-2.mt-md-0 {
+    width: 50% !important;
+  }
+
+  .col-12.col-sm-6.col-md-2.mt-2.mt-md-0.text-sm-end a {
+    width: 100% !important;
+  }
+  
+}
+.blog_section {
+  background-color: #ffffff;
+}
+.blog_profile {
+  padding: 20px;
+  border-radius: 10px;
+}

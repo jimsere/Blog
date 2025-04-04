@@ -46,5 +46,12 @@ class User extends Authenticatable
 {
     return $this->hasMany(\App\Models\Post::class);
 }
+public static function boot() {
+    parent::boot();
+
+    static::deleting(function ($user) {
+        $user->posts()->delete();
+    });
+}
 
 }

@@ -75,6 +75,7 @@
               </li>
 
 
+
               @guest
               <li class="nav-item last">
                   <a class="nav-link" href="{{ route('login') }}">{{ __('Συνδεση') }}</a>
@@ -108,7 +109,11 @@
                 <a class="nav-link" href="{{ route('profile') }}">προφιλ👤</a>
               </li>
               @endauth
-              
+              @if (Auth::check() && Auth::user()->is_admin)
+                  <li class="nav-item">
+                      <a class="nav-link" href="{{ route('dashboard') }}">🔑 Admin</a>
+                  </li>
+              @endif
             </ul>
           </div>
         </div>

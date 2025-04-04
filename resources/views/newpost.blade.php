@@ -15,9 +15,9 @@
             <select name="category" class="form-control mb-3">
                 <option value="" disabled selected>Επιλέξτε Κατηγορία</option>
                 <option value="Ψυχολογία">🧠Ψυχολογία</option>
-                <option value="Μουσικη">🎵Μουσική</option>
-                <option value="Πολιτικο">📰Πολιτικό</option>
-                <option value="Ταινιες">🎞️Ταινίες</option>
+                <option value="Μουσική">🎵Μουσική</option>
+                <option value="Πολιτικό">📰Πολιτικό</option>
+                <option value="Ταινίες">🎞️Ταινίες</option>
                 <option value="Βιβλία">📚 Βιβλία</option>
                 <option value="Συνταγές / Φαγητό">🍔 Συνταγές / Φαγητό</option>
                 <option value="Τεχνολογία">💻 Τεχνολογία</option>

@@ -50,7 +50,6 @@
 
 
 
-
           </div>
           <div class="col-12 col-sm-6 col-md-2 mt-2 mt-md-0">
             <button class="btn btn-outline-success w-100" type="submit">Αναζήτηση</button>
@@ -103,3 +102,5 @@
 </section>
 <!-- end blog section -->
 @endsection
+
+  

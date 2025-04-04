@@ -143,7 +143,7 @@ public function category($slug)
         'politiko' => 'Πολιτικό',
         'tainies' => 'Ταινίες',
         'hobby' => 'Χόμπι',
-        'athlisi' => 'Αθληση',
+        'athlisi' => 'Άθληση',
         'vivlia' => 'Βιβλία',
         'syntages-faghto' => 'Συνταγές & Φαγητό',
         'texnologia' => 'Τεχνολογία',

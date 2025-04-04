@@ -36,7 +36,7 @@
   </div>
 
   {{-- Posts χρήστη --}}
-  <section class="blog_section">
+  <section class="blog_section blog_profile">
     <div class="container">
       <h3 class="mb-4">Τα δικά σου άρθρα</h3>
       <div class="row">

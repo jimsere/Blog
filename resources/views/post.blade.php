@@ -42,14 +42,22 @@
         </div>
     </div>
 
-    <!-- Buttons -->
-    <!-- Buttons -->
-@if(Auth::check() && Auth::user()->id == $post->user->id)
-<div class="d-flex justify-content-center flex-wrap gap-2 mt-4">
-    <a href="{{ route('post.edit', $post->slug) }}" class="btn btn-success">✏️ Επεξεργασία</a>
-    <a href="{{ route('post.delete', $post->slug) }}" class="btn btn-danger">🗑️ Διαγραφή</a>
-</div>
-@endif
+   <!-- Buttons -->
+    @if(Auth::check() && Auth::user()->id == $post->user->id)
+    <div class="d-flex flex-wrap justify-content-center gap-2 mt-4 text-center">
+        <!-- Επεξεργασία -->
+        <form action="{{ route('post.edit', $post->slug) }}" method="GET" class="flex-grow-1 flex-md-grow-0">
+            <button type="submit" class="btn btn-success w-100 w-md-auto">✏️ Επεξεργασία</button>
+        </form>
+    
+        <!-- Διαγραφή -->
+        <form action="{{ route('post.delete', $post->slug) }}" method="POST" onsubmit="return confirm('Είσαι σίγουρος ότι θέλεις να διαγράψεις αυτό το post;');" class="flex-grow-1 flex-md-grow-0">
+            @csrf
+            @method('DELETE')
+            <button type="submit" class="btn btn-danger w-100 w-md-auto">🗑️ Διαγραφή</button>
+        </form>
+    </div>     
+    @endif
 
 </div>
 @endsection
