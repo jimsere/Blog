@@ -41,7 +41,6 @@
 
 ![Image](Screenshots/Arxiki.png)
 
-https://github.com/jimsere/Blog/blob/main/Screenshots/Arxiki.png
 ---
 
 ### 📝 Δημιουργία Νέου Άρθρου
@@ -54,11 +53,11 @@ https://github.com/jimsere/Blog/blob/main/Screenshots/Arxiki.png
 
 ![Image](Screenshots/blog_page.png)
 ---
-### 👁️ Σελίδα Προβολής για το κάθε blog
+### 🗏 Σελίδα Προβολής για το κάθε blog
 
 ![Image](Screenshots/blog_view.png)
 ---
-### 📬 Σύνδεση στον ιστότοπο
+### 🖥️ Σύνδεση στον ιστότοπο
 
 ![Image](https://github.com/user-attachments/assets/050d145b-d1a3-4f6a-b0e9-9c7da0b4d40f)
 
@@ -67,12 +66,12 @@ https://github.com/jimsere/Blog/blob/main/Screenshots/Arxiki.png
 
 ![Image](https://github.com/user-attachments/assets/8c759246-2543-472a-96ab-96881afd8458)
 ---
-### 📝 Προφίλ χρήστη
+### 👤 Προφίλ χρήστη
 
 ![Image](Screenshots/user_profile.png)
 
 ---
-### 📝 Admin dashboard
+### 🤖 Admin dashboard
 
 ![Image](Screenshots/admin_panel.png)
 ---
