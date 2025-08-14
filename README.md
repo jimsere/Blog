@@ -46,17 +46,18 @@ https://github.com/jimsere/Blog/blob/main/Screenshots/Arxiki.png
 
 ### 📝 Δημιουργία Νέου Άρθρου
 
-![Image](https://github.com/user-attachments/assets/52127cd0-6ca1-464c-8d7d-2ccf59842b05)
+![Image](Screenshots/blog_creation.png)
 
 ---
 
-### 👁️ Σελίδα Προβολής Posts
+### 👁️ Σελίδα Προβολής blogs
 
-![Image](https://github.com/user-attachments/assets/fa7f4a2c-a102-4d97-9b19-b6f8e70066ff)
+![Image](Screenshots/blog_page.png)
 ---
-### 👁️ Σελίδα Προβολής για το κάθε post
+### 👁️ Σελίδα Προβολής για το κάθε blog
 
-![Image](https://github.com/user-attachments/assets/62df2474-97d9-45cf-891d-ffecf05e4af8)---
+![Image](Screenshots/blog_view.png)
+---
 ### 📬 Σύνδεση στον ιστότοπο
 
 ![Image](https://github.com/user-attachments/assets/050d145b-d1a3-4f6a-b0e9-9c7da0b4d40f)
@@ -66,9 +67,15 @@ https://github.com/jimsere/Blog/blob/main/Screenshots/Arxiki.png
 
 ![Image](https://github.com/user-attachments/assets/8c759246-2543-472a-96ab-96881afd8458)
 ---
-### 📬 Αρχική σε mobile version
+### 📝 Προφίλ χρήστη
 
-![Image](https://github.com/user-attachments/assets/81ae1c6d-9088-4839-8508-bc836c78e305)---
+![Image](Screenshots/user_profile.png)
+
+---
+### 📝 Admin dashboard
+
+![Image](Screenshots/admin_panel.png)
+---
 ## 🚀 Οδηγίες Εγκατάστασης (τοπικά)
 
 ```bash
