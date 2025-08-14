@@ -39,9 +39,9 @@
 
 ### 🏠 Αρχική Σελίδα Blog
 
-![Image](https://github.com/user-attachments/assets/e1494ae2-a02b-49db-9494-45c6c1241850)
+![Image](Screenshots/Arxiki.png)
 
-
+https://github.com/jimsere/Blog/blob/main/Screenshots/Arxiki.png
 ---
 
 ### 📝 Δημιουργία Νέου Άρθρου
