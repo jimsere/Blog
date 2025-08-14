@@ -33,6 +33,66 @@ class PostsController extends Controller
             'image' => 'nullable|image|max:1024', // Μέγιστο μέγεθος: 1MB
         ]);
 
+        // Local Profanity Check
+        $badWords = ['fuck', 'shit', 'asshole', 'bitch', 'bastard', 'dick', 'cunt','μαλάκας','γαμώ','μουνί','πούτσα'];
+        $content = strtolower($request->input('body'));
+
+        foreach ($badWords as $word) {
+            if (str_contains($content, $word)) {
+                return back()->withErrors(['body' => 'Το κείμενο περιέχει ακατάλληλες λέξεις.'])->withInput();
+            }
+        }
+
+        // OpenAI Moderation API
+        $response = \Http::withToken(env('OPENAI_API_KEY'))
+            ->post('https://api.openai.com/v1/moderations', [
+                'input' => $request->input('body'),
+            ]);
+
+        if ($response->failed()) {
+            return back()->withErrors(['body' => 'Σφάλμα στον έλεγχο περιεχομένου.'])->withInput();
+        }
+
+        $result = $response->json();
+
+        if ($result['results'][0]['flagged']) {
+            return back()->withErrors(['body' => 'Το κείμενο θεωρήθηκε ακατάλληλο.'])->withInput();
+        }
+
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('temp'); // προσωρινή αποθήκευση
+            $imageUrl = asset('storage/' . $imagePath);
+        
+            $response = \Http::get('https://api.sightengine.com/1.0/check.json', [
+                'models' => 'nudity,wad,offensive',
+                'api_user' => env('SIGHTENGINE_API_USER'),
+                'api_secret' => env('SIGHTENGINE_API_SECRET'),
+                'url' => $imageUrl,
+            ]);
+        
+            if ($response->failed()) {
+                \Storage::delete($imagePath);
+                return back()->withErrors(['image' => 'Σφάλμα στον έλεγχο εικόνας.'])->withInput();
+            }
+        
+            $result = $response->json();
+        
+            if (
+                $result['nudity']['raw'] > 0.5 ||
+                $result['nudity']['partial'] > 0.5 ||
+                $result['offensive']['prob'] > 0.5
+            ) {
+                \Storage::delete($imagePath);
+                return back()->withErrors(['image' => 'Η εικόνα θεωρήθηκε ακατάλληλη.'])->withInput();
+            }
+        
+            // Αν περάσει, αποθηκεύουμε για μεταφορά παρακάτω
+            $finalImageName = time() . '_' . $request->file('image')->getClientOriginalName();
+            \Storage::move($imagePath, 'public/uploads/' . $finalImageName);
+        }
+        
+
+
         $post = new Post();
         $post->title = $request->title;
         $post->body = Purifier::clean($request->body);
@@ -115,7 +175,9 @@ public function edit_post(Post $post, Request $request)
         if ($request->hasFile('image')) {
             $filename = time() . '_' . $request->file('image')->getClientOriginalName();
             $request->file('image')->storeAs('public/uploads', $filename);
-            $post->image = $filename;
+            if (isset($finalImageName)) {
+                $post->image = $finalImageName;
+            }
         }
 
         $post->save();
@@ -167,4 +229,29 @@ public function category($slug)
     return view('posts', compact('posts'));
     
 }
+
+public function report(Request $request, Post $post)
+{
+    $request->validate([
+        'reason' => 'required|string|max:255',
+    ]);
+
+    // Αποφυγή διπλής αναφοράς από τον ίδιο χρήστη
+    $existing = \App\Models\PostReport::where('post_id', $post->id)
+        ->where('user_id', auth()->id())
+        ->first();
+
+    if ($existing) {
+        return back()->with('error', 'Έχεις ήδη αναφέρει αυτό το post.');
+    }
+
+    \App\Models\PostReport::create([
+        'post_id' => $post->id,
+        'user_id' => auth()->id(),
+        'reason' => $request->reason,
+    ]);
+
+    return back()->with('success', 'Η αναφορά σου υποβλήθηκε.');
+}
+
 }

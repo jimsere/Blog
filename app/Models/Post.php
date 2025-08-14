@@ -35,9 +35,14 @@ class Post extends Model
 }
 
 public function getRouteKeyName()
-{
-    return 'slug';
-}
+    {
+        return 'slug';
+    }
+
+public function reports()
+    {
+        return $this->hasMany(\App\Models\PostReport::class);
+    }
 
 }
 

@@ -58,6 +58,23 @@
         </form>
     </div>     
     @endif
+    
+    <!-- Εμφανισιακό αναφορών-->
+    <form action="{{ route('post.report', $post) }}" method="POST" class="mt-4 d-flex justify-content-center">
+    @csrf
+    <div class="d-flex align-items-center">
+        <select name="reason" class="form-select form-select-sm me-2" required style="width: 200px;">
+            <option value="">🚨 Επιλέξτε λόγο αναφοράς</option>
+            <option value="Βία">Προώθηση Βίας</option>
+            <option value="Ναρκωτικά">Ναρκωτικά</option>
+            <option value="Μίσος">Ρητορική Μίσους</option>
+            <option value="Πορνογραφία">Ακατάλληλο Περιεχόμενο</option>
+            <option value="Άλλο">Άλλο</option>
+        </select>
+        <button class="btn btn-danger btn-sm">❗ Αναφορά</button>
+    </div>
+</form>
+
 
 </div>
 @endsection

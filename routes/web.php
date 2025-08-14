@@ -39,3 +39,5 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::delete('/admin/post/{post}', [AdminController::class, 'deletePost'])->name('admin.post.delete');
 });
 
+Route::post('/report-post/{post}', [PostsController::class, 'report'])->name('post.report');
+Route::view('/terms', 'terms')->name('terms');

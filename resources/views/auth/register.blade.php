@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container" style="margin-top: 60px; margin-bottom: 60px;">
+<div class="container" style="margin-top: 80px; margin-bottom: 80px;">
     <div class="row justify-content-center">
         <div class="col-md-6">
             <div class="card shadow-lg rounded-4 border-success">
@@ -63,6 +63,23 @@
                                    name="password_confirmation" required>
                         </div>
 
+
+                          {{-- Accept Terms --}}
+                        <div class="mb-3 form-check">
+                            <input class="form-check-input border-success @error('terms') is-invalid @enderror"
+                                type="checkbox" name="terms" id="terms" required>
+                            <label class="form-check-label" for="terms">
+                                Αποδέχομαι τους <a href="{{ route('terms') }}" target="_blank" class="text-success text-decoration-underline">Όρους Χρήσης</a>
+                            </label>
+
+                            @error('terms')
+                                <span class="invalid-feedback d-block mt-1" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+
+                        
                         {{-- Submit Button --}}
                         <div class="d-flex justify-content-end">
                             <button type="submit" class="btn btn-success px-4">
@@ -75,4 +92,18 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('styles')
+<style>
+    body {
+        background: url('/images/bg.jpg') no-repeat center center fixed;
+        background-size: cover;
+    }
+
+    .card {
+        background-color: rgba(255, 255, 255, 0.9) !important; /* ημιδιαφανές */
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    }
+</style>
 @endsection

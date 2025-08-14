@@ -15,7 +15,6 @@
 
   <title>e-bloggers</title>
 
-
   <!-- bootstrap core css -->
   <link rel="stylesheet" type="text/css" href="/css/bootstrap.css" />
 
@@ -23,11 +22,9 @@
   <!-- jQuery -->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-  <!-- Popper.js -->
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<!-- Bootstrap 4 JS bundle (includes Popper.js) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 
-  <!-- Bootstrap JS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"></script>
   
 
   <!-- fonts style -->
@@ -42,6 +39,7 @@
   <!-- adding nice font -->
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
 
+    @yield('styles')
 </head>
 
 <body>
@@ -86,24 +84,17 @@
               </li>
           @endif
           @else
-              <li class="nav-item dropdown last">
-                      <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                          {{ Auth::user()->name }}
-                      </a>
+              <li class="nav-item last">
+                  <a class="nav-link" href="{{ route('logout') }}"
+                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                      Εξοδος🔓
+                  </a>
+                  <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                      @csrf
+                  </form>
+              </li>
+          @endguest
 
-                      <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                          <a class="dropdown-item" href="{{ route('logout') }}"
-                          onclick="event.preventDefault();
-                                          document.getElementById('logout-form').submit();">
-                              {{ __('Αποσύνδεση') }}
-                          </a>
-
-                          <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                              @csrf
-                          </form>
-                      </div>
-                  </li>
-              @endguest
               @auth
               <li class="nav-item">
                 <a class="nav-link" href="{{ route('profile') }}">προφιλ👤</a>
@@ -143,9 +134,11 @@
               <i class="fa fa-phone me-2"></i> Τηλέφωνο: +30 23920 21918
             </a>
           </li>
+          <li>
           <a href="mailto:info@blog.com" class="text-decoration-none text-light">
             <i class="fa fa-envelope me-2"></i> Email: info@blog.com
-          </a>          
+          </a>  
+          </li>        
           <li>
             <i class="fa fa-map-marker me-2"></i> Τοποθεσία: Θεσσαλονίκη
           </li>
@@ -162,6 +155,7 @@
           <li><a href="/posts" class="text-decoration-none text-light">📝 Blogs</a></li>
           <li><a href="/contact" class="text-decoration-none text-light">📬 Επικοινωνία</a></li>
           <li><a href="/profile" class="text-decoration-none text-light">👤 Το Προφίλ μου</a></li>
+          <li><a href="/terms" class="text-decoration-none text-light">🧾 Όροι Χρήσης</a></li>
         </ul>
       </div>
 
@@ -203,9 +197,7 @@
 <footer class="footer_section py-3 text-center text-white" style="background-color: #111;">
   <div class="container">
     <p class="mb-0 white-text">
-      &copy; <span id="displayYear">{{ date('Y') }}</span> All Rights Reserved by
-      <a href="https://html.design/" class="white-text text-decoration-none fw-bold">Free Html Templates</a>
-    </p>
+      &copy; <span id="displayYear">{{ date('Y') }}</span> Designed by Sere_Creations</p>
   </div>
 </footer>
 

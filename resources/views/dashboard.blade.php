@@ -44,6 +44,50 @@
         </table>
     </div>
 
+
+
+
+    <h2 class="mb-3">📢 Αναφορές Posts</h2>
+    <div class="table-responsive mb-5">
+        <table class="table table-bordered">
+            <thead class="thead-light">
+                <tr>
+                    <th>Post ID</th>
+                    <th>Τίτλος</th>
+                    <th>Αριθμός Αναφορών</th>
+                    <th>Λόγοι</th>
+                    <th>Ενέργειες</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($reportedPosts as $post)
+                    <tr>
+                        <td>{{ $post->id }}</td>
+                        <td>{{ $post->title }}</td>
+                        <td>{{ $post->reports_count }}</td>
+                        <td>
+                            <ul>
+                                @foreach ($post->reports->groupBy('reason') as $reason => $group)
+                                    <li>{{ $reason }} ({{ $group->count() }})</li>
+                                @endforeach
+                            </ul>
+                        </td>
+                        <td>
+                            <form action="{{ route('post.delete', $post->slug) }}" method="POST" onsubmit="return confirm('Διαγραφή post;');">
+                                @csrf
+                                @method('DELETE')
+                                <button class="btn btn-danger btn-sm">🗑️ Διαγραφή</button>
+                            </form>
+                        </td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
+
+
+
+
     <h2 class="mb-3">📝 Posts</h2>
     <div class="table-responsive">
         <table class="table table-bordered">
@@ -77,3 +121,4 @@
     </div>
 </div>
 @endsection
+

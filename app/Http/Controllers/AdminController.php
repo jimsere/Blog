@@ -11,9 +11,19 @@ class AdminController extends Controller
     public function index()
     {
         $users = User::all();
-        $posts = Post::all();
-        return view('dashboard', compact('users', 'posts'));
+        $posts = Post::with('user')->get();
+
+        // Νέα ενότητα: Αναφορές
+        $reportedPosts = Post::with(['reports' => function ($query) {
+            $query->select('id', 'post_id', 'reason');
+        }])
+        ->withCount('reports')
+        ->has('reports')
+        ->get();
+
+        return view('dashboard', compact('users', 'posts', 'reportedPosts'));
     }
+
 
     public function deleteUser(User $user)
     {
